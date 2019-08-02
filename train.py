@@ -8,7 +8,7 @@ total_epoch = 5000
 hidden_size = 200
 vocab_size = 5000
 max_length = 128
-entity_class = 8
+entity_class = 7
 
 lr = 1e-4
 batch_size = 256
@@ -18,8 +18,9 @@ elmo = ELMo(batch_size, hidden_size, vocab_size)
 
 
 def network(X):
-    w = tf.get_variable("fcn_w", [1, hidden_size, entity_class])
-    b = tf.get_variable("fcn_b", [entity_class])
+    w = tf.get_variable("fcn_w", [1, hidden_size, entity_class + 1])
+    b = tf.get_variable("fcn_b", [entity_class + 1])
+    # 这里输出维度用entity_class + 1而不是entity_class，因为输出里除了7类实体，还有一类用来表示每个句子补齐的<PAD>位
     w_tile = tf.tile(w, [batch_size, 1, 1])
 
     logists = tf.nn.softmax(tf.nn.xw_plus_b(X, w_tile, b), name="logists")
@@ -40,7 +41,7 @@ def train():
     # optimizer = tf.train.AdamOptimizer(lr).minimize(seq_loss)
 
     trainableVariables = tf.trainable_variables()
-    optimizer = tf.train.AdamOptimizer(1e-4)
+    optimizer = tf.train.AdamOptimizer(lr)
     grads, a = tf.clip_by_global_norm(tf.gradients(seq_loss, trainableVariables), 5)
     train_op = optimizer.apply_gradients(zip(grads, trainableVariables))
 

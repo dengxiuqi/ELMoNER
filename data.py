@@ -68,7 +68,7 @@ class NERData(object):
         """将命名实体转化为id"""
         return self.entity_map.get(entity, 0)
 
-    def id2entity(self, Id):
+    def idpyth2entity(self, Id):
         """将id还原为实体名"""
         return self.words[Id]
 

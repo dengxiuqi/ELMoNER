@@ -4,8 +4,9 @@
 
 #### 模型介绍
 参考文献: `《Deep contextualized word representations》`  
-ELMo模型图示
-![avatar](images/ELMo.png)
+ELMo模型图示  
+![avatar](images/ELMo.png)  
+
 ELMo的优势  
 * ELMo能够学习到词汇用法的复杂性，比如语法、语义
 * ELMo能够动态生成词向量，学习到不同上下文情况下的一词多义现象
