@@ -64,8 +64,3 @@ ELMo的优势
 `('周', 'B-PER'),('杰', 'I-PER'),('伦', 'I-PER')`  
 `('林', 'B-PER'),('俊', 'I-PER'),('杰', 'I-PER')`  
 `('陈', 'B-PER'),('奕', 'I-PER'),('迅', 'I-PER')`  
-
-### Author
-欢迎交流  
-wechat:`dengxiuqi007`  
-2018.6
